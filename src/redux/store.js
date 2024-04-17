@@ -5,6 +5,7 @@ import cartSlice from "./slice/cartSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import saga from "./saga/saga";
+import localStorageMiddleware from "./middleware/localStorageMiddleware";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,7 +16,7 @@ const store = configureStore({
     productPage: productPageSlice,
     cart : cartSlice
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([sagaMiddleware, localStorageMiddleware]),
 });
 
 sagaMiddleware.run(saga);

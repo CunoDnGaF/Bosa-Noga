@@ -26,10 +26,8 @@ const cartSlice = createSlice({
             return item;
           }
         });
-        localStorage.setItem('cart', JSON.stringify(state.items));
         state.success = false;
       } else {
-        localStorage.setItem('cart', JSON.stringify([...state.items, product]));
         state.items = [...state.items, product];
         state.success = false;
       }
@@ -37,7 +35,6 @@ const cartSlice = createSlice({
     removeItem(state, action) {
       const cart = state.items.filter((item) => item.name != action.payload);
       state.items = cart;
-      localStorage.setItem('cart', JSON.stringify(cart));
     },
     changeOwnerData(state, action) {
       const key = action.payload.id;
@@ -68,7 +65,6 @@ const cartSlice = createSlice({
     orderSuccess(state) {
       state.loading = false;
       state.success = true;
-      localStorage.removeItem('cart');
       state.items = [];
     },
     orderError(state, action) {

@@ -9,8 +9,6 @@ const initialState = {
   catError: null,
   activeCategory: '',
   searchValue: '',
-  loadMore: true,
-  loadMoreItems: [],
 }
 
 const catalogSlice = createSlice({
@@ -41,23 +39,9 @@ const catalogSlice = createSlice({
     },
     categoryChange(state, action) {
       state.activeCategory = action.payload;
-      state.loadMoreItems = [];
-      state.loadMore = true;
     },
     searchChange(state, action) {
       state.searchValue = action.payload;
-    },
-    loadMoreLoading(state) {
-      state.loading = true;
-    },
-    loadMoreSuccess(state, action) {
-      state.loading = false;
-      state.loadMore = action.payload.length < 6 ? false : true;
-      state.loadMoreItems = action.payload
-    },
-    loadMoreError(state, action) {
-      state.loading = false;
-      state.error = action.payload;
     },
   }
 })
@@ -70,9 +54,6 @@ export const {catalogLoading,
               categoriesError, 
               categoryChange,
               searchChange,
-              loadMoreLoading,
-              loadMoreError,
-              loadMoreSuccess,
             } = catalogSlice.actions;
 
 export default catalogSlice.reducer;

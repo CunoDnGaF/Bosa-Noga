@@ -1,6 +1,6 @@
 import { topSalesLoading, topSalesSuccess, topSalesError } from "../slice/topSalesSlice"
 import { productPageLoading, productPageSuccess, productPageError } from "../slice/productPageSlice"
-import { catalogLoading, catalogSuccess, catalogError, categoriesLoading, categoriesSuccess, categoriesError, loadMoreLoading, loadMoreSuccess, loadMoreError } from "../slice/catalogSlice"
+import { catalogLoading, catalogSuccess, catalogError, categoriesLoading, categoriesSuccess, categoriesError } from "../slice/catalogSlice"
 import { take, put, spawn, takeLatest, call } from 'redux-saga/effects';
 
 async function getData(path) {
@@ -43,11 +43,6 @@ export default function* saga() {
     req: categoriesLoading, 
     success: categoriesSuccess, 
     error: categoriesError
-  })
-  yield spawn(watchLoadingSaga, {
-    req: loadMoreLoading, 
-    success: loadMoreSuccess, 
-    error: loadMoreError
   })
   yield spawn(watchLoadingSaga, {
     req: productPageLoading, 
