@@ -7,7 +7,7 @@ function Order() {
   const dispatch = useDispatch();
 
   const submitOrder = async (order) => {
-    const response = await fetch(`http://localhost:7070/api/order`, {
+    const response = await fetch(`https://bosa-noga-be.onrender.com/api/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",

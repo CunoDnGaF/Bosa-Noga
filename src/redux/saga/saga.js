@@ -4,7 +4,7 @@ import { catalogLoading, catalogSuccess, catalogError, categoriesLoading, catego
 import { take, put, spawn, takeLatest, call } from 'redux-saga/effects';
 
 async function getData(path) {
-  const response = await fetch(`http://localhost:7070/${path}`);
+  const response = await fetch(`https://bosa-noga-be.onrender.com/${path}`);
   if (!response.ok) {
     throw new Error(response.statusText);
   }

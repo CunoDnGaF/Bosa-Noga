@@ -27,7 +27,7 @@ function ProductList() {
       if (offset) {
         params.append('offset', offset)
       }
-      const response = await fetch(`http://localhost:7070/api/items?${params}`)
+      const response = await fetch(`https://bosa-noga-be.onrender.com/api/items?${params}`)
     
       const data = await response.json()
       
